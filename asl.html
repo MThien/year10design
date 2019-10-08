@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<title>ASL :)</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<body>
+
+<!-- Sidebar -->
+<div class="w3-sidebar w3-bar-block" style="display:none" id="mySidebar">
+  <button onclick="w3_close()" class="w3-bar-item w3-button w3-large">Close &times;</button>
+  <a href="#" class="w3-bar-item w3-button">Home</a>
+  <a href="#" class="w3-bar-item w3-button">ASL Basics</a>
+  <a href="#" class="w3-bar-item w3-button">Cultural Information</a>
+</div>
+
+<!-- Page Content -->
+<div class="w3-purple">
+  <button class="w3-button w3-purple w3-xlarge" onclick="w3_open()">☰</button>
+  <div class="w3-container">
+    <h1>ASL 101</h1>
+  </div>
+</div>
+
+<img src="https://www.google.com/url?sa=i&source=images&cd=&ved=2ahUKEwiC07GZjPrkAhXKg-AKHY1fBIQQjRx6BAgBEAQ&url=https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FAmerican_Sign_Language&psig=AOvVaw2tq3WpNnfRLgKiSAniKhp3&ust=1569986119609729" alt="Car" style="width:100%">
+
+<div class="w3-container">
+<p>American Sign Language (ASL) is a natural language that serves as the predominant sign language of Deaf communities in the United States and most of Anglophone Canada. Besides North America, dialects of ASL and ASL-based creoles are used in many countries around the world, including much of West Africa and parts of Southeast Asia. </p>
+</div>
+
+<script>
+function w3_open() {
+  document.getElementById("mySidebar").style.width = "100%";
+  document.getElementById("mySidebar").style.display = "block";
+}
+
+function w3_close() {
+  document.getElementById("mySidebar").style.display = "none";
+}
+</script>
+     
+</body>
+</html> 
