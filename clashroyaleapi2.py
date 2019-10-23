@@ -1,28 +1,16 @@
 import requests
 import webbrowser
 from tkinter import *
-class AAA:
-    def __init__(self):
-        myfile = open("apisite.html", "w")
-        window = Tk()
-        window.title("Clash Royale Statistics")
-        label = Label(window, text = "Find out your clash royale statistics!")
-        self.name = StringVar()
-        enterTag = Entry(textvariable = self.name)
-        btnName = Button(text = "Find My Stats", command = self.processBtn)
-        label.grid(row = 1, column = 1)
-        enterTag.grid(row = 1, column = 2)
-        btnName.grid(row = 1, column = 3)
-        window.mainloop()
 
-    def processBtn(self):
+def processBtn():
         headers = {
-            'Accept': 'application/json',
-            'authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiIsImtpZCI6IjI4YTMxOGY3LTAwMDAtYTFlYi03ZmExLTJjNzQzM2M2Y2NhNSJ9.eyJpc3MiOiJzdXBlcmNlbGwiLCJhdWQiOiJzdXBlcmNlbGw6Z2FtZWFwaSIsImp0aSI6IjQ3NzBlZTc4LWRiNDItNDJiNy04NTU2LTFiNDkyY2I4YzBiNSIsImlhdCI6MTU2OTM2ODQ0MCwic3ViIjoiZGV2ZWxvcGVyL2MyYjY1NmYzLWE4MGMtOWU4Mi03MTdmLTcwY2I2YWYwZjY3YSIsInNjb3BlcyI6WyJyb3lhbGUiXSwibGltaXRzIjpbeyJ0aWVyIjoiZGV2ZWxvcGVyL3NpbHZlciIsInR5cGUiOiJ0aHJvdHRsaW5nIn0seyJjaWRycyI6WyI5OS4yNDEuMzUuMTYwIl0sInR5cGUiOiJjbGllbnQifV19.0Cro4Pg33ZR44fJILziuD_JtX1YXcnFjXalLDeLhrR2XtPA4_RSwApEsWYs6ZGhx_Cr5MnfpBiQgenNTSp5rSg'
-        }
-        response = requests.get("https://api.clashroyale.com/v1/players/%23" + str(self.name).upper())
+    'Accept': 'application/json',
+    'authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiIsImtpZCI6IjI4YTMxOGY3LTAwMDAtYTFlYi03ZmExLTJjNzQzM2M2Y2NhNSJ9.eyJpc3MiOiJzdXBlcmNlbGwiLCJhdWQiOiJzdXBlcmNlbGw6Z2FtZWFwaSIsImp0aSI6IjkyZTQ4ZDg3LTdjMjAtNDViOC1iMTIzLWQ4ODJkZTBiNWQ0MyIsImlhdCI6MTU3MDU1MDE0NSwic3ViIjoiZGV2ZWxvcGVyL2MyYjY1NmYzLWE4MGMtOWU4Mi03MTdmLTcwY2I2YWYwZjY3YSIsInNjb3BlcyI6WyJyb3lhbGUiXSwibGltaXRzIjpbeyJ0aWVyIjoiZGV2ZWxvcGVyL3NpbHZlciIsInR5cGUiOiJ0aHJvdHRsaW5nIn0seyJjaWRycyI6WyI2OS43Ny4xNjAuMiJdLCJ0eXBlIjoiY2xpZW50In1dfQ.1GXCZ9eJ3FS76aUN8ENMCCIexq6h6jhlu6fZkwoER3qXChnZ3tu8yw1JuoVUmg3QbdsyWonafetxFw0L32oIOQ'
+}
+        response = requests.get("https://api.clashroyale.com/v1/players/%23" + str(enterTag.get().upper()))
         #Retrieving Data From API
         userdata = response.json()
+        print(str(userdata))
         king_tower = str(userdata['expLevel'])
         player_name = str(userdata['name'])
         player_trophies = str(userdata['trophies'])
@@ -79,4 +67,12 @@ class AAA:
         """)
         myfile.close()
 
-AAA()
+window = Tk()
+window.title("Clash Royale Statistics")
+label = Label(window, text = "Find out your clash royale statistics!")
+enterTag = Entry(window)
+btnName = Button(text = "Find My Stats", command = processBtn)
+label.grid(row = 1, column = 1)
+enterTag.grid(row = 1, column = 2)
+btnName.grid(row = 1, column = 3)
+mainloop()
